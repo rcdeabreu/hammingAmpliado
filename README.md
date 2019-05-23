@@ -1,0 +1,2 @@
+# hammingAmpliado
+codigo hamming Ampliado
