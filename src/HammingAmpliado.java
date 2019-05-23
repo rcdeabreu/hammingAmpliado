@@ -41,13 +41,13 @@ public class HammingAmpliado {
 		return H;
 	}
 	
-	public int [][] getHtr(){
+	public static int [][] getHtr(){
 		return Htr;
 	}
-	public int [][] getG(){
+	public static int [][] getG(){
 		return G;
 	}
-	public void mostrarH(){
+	public static void mostrarH(){
 		for (int x=0; x < getH().length; x++) {
 			System.out.printf("|");  
 			for (int y=0; y < getH()[x].length; y++) {
@@ -57,7 +57,7 @@ public class HammingAmpliado {
 			System.out.println();	
 		}
 	}
-	public void mostrarHtr(){
+	public static void mostrarHtr(){
 		for (int x=0; x < getHtr().length; x++) {
 			System.out.printf("|");  
 			for (int y=0; y < getHtr()[x].length; y++) {
@@ -67,7 +67,8 @@ public class HammingAmpliado {
 			System.out.println();	
 		}
 	}
-	public void mostrarG(){
+	
+	public static void mostrarG(){
 		for (int x=0; x < getG().length; x++) {
 			System.out.printf("|");  
 			for (int y=0; y < getG()[x].length; y++) {
@@ -79,7 +80,11 @@ public class HammingAmpliado {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		mostrarH();
+		System.out.println("-----------------------------------------------------------------");
+		mostrarHtr();
+		System.out.println("-----------------------------------------------------------------");
+		mostrarG();
 	}
 
 }
