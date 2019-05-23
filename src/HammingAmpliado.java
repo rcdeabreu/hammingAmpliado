@@ -1,4 +1,4 @@
-
+//HammingAmpliado
 public class HammingAmpliado {
 	//codigo Hamming Ampliado. Ejemplo 3.1.4 apuntes Teoría de Códigos ESEI
 	//Creación de las matrices H*(H) H*tr(Htr) y G*(G)
