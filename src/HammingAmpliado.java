@@ -155,10 +155,8 @@ import java.util.*;
 			return multiplicarMatrices(c,getHtr());
 		}
 
-			public static int [][] introduceError(int[][] a, int posError){
-
-				
-		if(posError <0 || posError >11){
+	public static int [][] introduceError(int[][] a, int posError){
+			if(posError <0 || posError >11){
 				return a;
 		}else if(a[0][posError] == 1)
 				{
@@ -167,9 +165,8 @@ import java.util.*;
 					a[0][posError]=1;
 				}
 				
-				return a;
-
-			}
+			return a;
+	}
 
 
 
