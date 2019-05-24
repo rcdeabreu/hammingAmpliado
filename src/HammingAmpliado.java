@@ -3,12 +3,14 @@ public class HammingAmpliado {
 	//codigo Hamming Ampliado. Ejemplo 3.1.4 apuntes Teoría de Códigos ESEI
 	//Para m=4, H(4,2)  codigo (15,11)
 	//Creación de las matrices H*(H) H*tr(Htr) y G*(G)
+	//H 5 Filas x 16 Columnas
 	private static int [][] H = {   {0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0},
 									{0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0},
 									{0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0},
 									{1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
 									{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 								};
+	//Htr 16 Filas x 5 Columnas
 	private static int [][] Htr = { {0,0,0,1,1},
 									{0,0,1,0,1},
 									{0,0,1,1,1},
@@ -26,6 +28,7 @@ public class HammingAmpliado {
 									{1,1,1,1,1},
 									{0,0,0,0,1},
 								  };
+	//G 11 Filas x 16 Columnas
 	private static int [][] G = { {0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1},
 								  {1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1},
 								  {0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,1},
@@ -43,6 +46,88 @@ public class HammingAmpliado {
 	public static int [][] getHtr(){ return Htr; }
 	public static int [][] getG(){ return G; }
 	
+	public static void mostrarMatriz(int[][] a) {
+		
+		for(int i=0;i<a.length;i++) { 
+    		for(int j=0;j<a[0].length;j++) { 
+    		System.out.print(a[i][j] + " "); 
+    		} 
+    		System.out.println(); 
+    		} 
+		
+	}
+	
+	public static int[][] calcularIdentidad(int tam){
+		int [][] I = new int[tam][tam];
+		
+		for(int i=0;i<tam;i++) { 
+			
+    		for(int j=0;j<tam;j++) { 
+    			
+    		if(i==j) {I[i][j]=1;}
+    		
+    		else	{I[i][j]=0;}
+    		
+    		}
+    			
+    		}
+		
+		return I;
+    		} 
+	
+	public static int[][] multiplicarMatrices(int[][] a, int[][] b) {
+	    int[][] c = new int[a.length][b[0].length];
+	    if (a[0].length == b.length) {
+	        for (int i = 0; i < a.length; i++) {
+	            for (int j = 0; j < b[0].length; j++) {
+	                for (int k = 0; k < a[0].length; k++) {
+	                    c[i][j] = c[i][j] + a[i][k] * b[k][j];
+	                    if(c[i][j]>1){c[i][j]=0;}
+	                }
+	            }
+	        }
+	    }
+	    
+	    return c;
+	}
+	
+	
+	public static int[][] sumaMatrices(int[][] a, int[][] b){
+		int[][] c = a;
+		for (int x=0; x < a.length; x++) {
+			  for (int y=0; y < a[x].length; y++) {
+				  c[x][y] = a[x][y]+b[x][y];
+				  
+				  if(c[x][y]==2) {c[x][y]=0;}
+			  }
+			}
+		return c;
+    		} 
+	
+	
+	public static int[][] traspuesta(int[][] a){
+		int[][] tr = a;
+		for (int x=0; x < a.length; x++) {
+			  for (int y=0; y < a[x].length; y++) {
+				  tr[y][x] = a[x][y];
+			  }
+			}
+		
+		return tr;
+    		} 
+
+	public static int peso(int[][] matriz){
+		int weight = 12;
+		for (int x=0; x < matriz.length; x++) {
+			int w = 0;
+			  for (int y=0; y < matriz[x].length; y++) {
+				  if (matriz[x][y] == 1) {w++;};
+			  }
+			  if (w<weight) {weight=w;}
+			}
+		
+		return weight;
+    		}
 	public static void mostrarMatriz(int matrizM [][], String mensaje ){
 		System.out.println(mensaje+"\n");
 		for (int x=0; x < matrizM.length; x++) {
@@ -101,27 +186,29 @@ public class HammingAmpliado {
 		// TODO Auto-generated method stub
 		mostrarMatriz(getH(),"Matriz H*");
 		mostrarMatriz(getHtr(),"Matriz Htr*");
+		//traspuesta(getH());
 		mostrarMatriz(getG(),"Matriz G*");
-		int [][] m = {{0},
-					  {0},
-					  {0},
-					  {0},
-					  {0},
-					  {0},
-					  {1},
-					  {0},
-					  {0},
-					  {0},
-					  {0}
-					 };
-		mostrarMatriz(m,"Vector m");
-		System.out.println("filas:"+m[0].length+" Columnas: "+m.length);
-		int [][] c = multiplicarMatriz(getG(),m);
-		mostrarMatriz(c,"vector * c");
-		System.out.println("filas:"+c[0].length+" Columnas: "+c.length);
-		mostrarMatriz(getSindrome(c),"Sindrome");
-		int [][] palabra = multiplicarMatriz(getG(),c);
-		mostrarMatriz(palabra,"palaba: ");
+		System.out.println("G=> Columnas:"+getG()[0].length+" filas: "+getG().length);
+		//palabra 1 Filas x 11 Columnas
+		//		int [][] palabra = {{0},{0},{0},{0},{0},{0},{1},{0},{0},{0},{0}};
+
+		int [][] palabra = {{0,0,0,0,0,0,1,0,0,0,0}};
+		mostrarMatriz(palabra,"Vector palabra");
+		System.out.println("Palabra=> Columnas:"+palabra[0].length+" filas: "+palabra.length);
+		
+		System.out.println("G=> Columnas:"+getG()[0].length+" Palabra=> filas: "+palabra.length);
+		
+		//Codificar palabra
+		int [][] palabraCodficada = multiplicarMatriz(palabra,getG());
+		mostrarMatriz(palabraCodficada,"palabraCodficada: ");
+		System.out.println("palabraCodficada=> filas:"+palabraCodficada[0].length+" Columnas: "+palabraCodficada.length);
+		mostrarMatriz(multiplicarMatrices(palabra,getG()),"palabraCodficada: ");
+		
+		/*
+		mostrarMatriz(getSindrome(palabraCodficada),"Sindrome palabraCodficada: ");
+		
+		int [][] palabraDecodificada = multiplicarMatriz(getG(),palabraCodficada);
+		mostrarMatriz(palabraDecodificada,"palabraDecodificada: ");*/
 	}
 
 }
