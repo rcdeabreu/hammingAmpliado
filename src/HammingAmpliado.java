@@ -171,11 +171,10 @@ public class HammingAmpliado {
 		int [][] palabraCodficada = multiplicarMatrices(palabra,getG());
 		mostrarMatriz(palabraCodficada,"palabraCodficada: ");
 		System.out.println("palabraCodficada=> filas:"+palabraCodficada.length+" Columnas: "+palabraCodficada[0].length);
-		/*
+		
 		mostrarMatriz(getSindrome(palabraCodficada),"Sindrome palabraCodficada: ");
 		
-		int [][] palabraDecodificada = multiplicarMatriz(getG(),palabraCodficada);
-		mostrarMatriz(palabraDecodificada,"palabraDecodificada: ");*/
+		//nos falta decodificar No recuerdo como se decodifica
 	}
 
 }
