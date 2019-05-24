@@ -156,7 +156,9 @@ import java.util.*;
 		}
 
 	public static int [][] introduceError(int[][] a, int posError){
-			if(posError <0 || posError >11){
+
+				
+		if(posError <0 || posError >11){
 				return a;
 		}else if(a[0][posError] == 1)
 				{
@@ -165,11 +167,25 @@ import java.util.*;
 					a[0][posError]=1;
 				}
 				
-			return a;
-	}
+				return a;
 
+			}
 
-
+	public static int [][] decodificarPalabra (int [][]pCodificada){
+		///cojemos los datos en las posiciones que no son potencia de 2
+		
+		int [][] palabraDecod = new int [1][11];
+		int j=0;
+		for (int i = 0; i<15 ;i++){
+			if (i !=1 && i != 2 && i != 4 && i!=8 && i !=16){
+			palabraDecod [0][j]=pCodificada [0][i];
+				//System.out.println(pCodificada [0][i]);
+			j++;
+				}
+			}
+			
+			return palabraDecod;
+		}
 
 
 		public static void main(String[] args) {
@@ -210,7 +226,22 @@ import java.util.*;
 			int [][] palabraConError = introduceError(palabraCodficada, posicionError);
 
 			mostrarMatriz(palabraConError,"palabraConError: ");
+			
+			//Calculamos el sindrome de la palabra con el error
+			
+			
 			//nos falta decodificar No recuerdo como se decodifica
+			
+			
+			
+			int [][] palabraDecodificada = decodificarPalabra (palabraCodficada);
+			mostrarMatriz(palabraDecodificada,"palabraDecodificada: ");
+			
+			
+			
+			
+			
+			
 		}
 
 	}
