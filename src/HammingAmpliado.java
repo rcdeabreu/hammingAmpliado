@@ -157,10 +157,10 @@ import java.util.*;
 				  }
 			}
 			if(numErrores==0) {
-				System.out.println("sindrome: ["+sindrome[0][0]+sindrome[0][1]+sindrome[0][2]+sindrome[0][3]+"|"+sindrome[0][4]+"]\n");
+				System.out.println("Sindrome: ["+sindrome[0][0]+sindrome[0][1]+sindrome[0][2]+sindrome[0][3]+"|"+sindrome[0][4]+"]\n");
 
 			}else {
-				System.out.println("sindrome (con Error): ["+sindrome[0][0]+sindrome[0][1]+sindrome[0][2]+sindrome[0][3]+"|"+sindrome[0][4]+"]\n");
+				System.out.println("Sindrome (con Error): ["+sindrome[0][0]+sindrome[0][1]+sindrome[0][2]+sindrome[0][3]+"|"+sindrome[0][4]+"]\n");
 
 			}
 /**
