@@ -35,7 +35,7 @@ import java.util.*;
 										{0,0,0,0,1},
 									  };
 		//G 11 Filas x 16 Columnas
-		private static int [][] G = { {0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1},
+		private static int [][] G = { {1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
 									  {1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1},
 									  {0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,1},
 									  {1,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0},
@@ -177,7 +177,8 @@ import java.util.*;
 		int [][] palabraDecod = new int [1][11];
 		int j=0;
 		for (int i = 0; i<15 ;i++){
-			if (i !=1 && i != 2 && i != 4 && i!=8 && i !=16){
+			//i+1 porque empieza en cero
+			if (i+1 !=1 && i+1 != 2 && i+1 != 4 && i+1!=8 && i+1 !=16){
 			palabraDecod [0][j]=pCodificada [0][i];
 				//System.out.println(pCodificada [0][i]);
 			j++;
@@ -201,7 +202,7 @@ import java.util.*;
 			//palabra 1 Filas x 11 Columnas
 			//		int [][] palabra = {{0},{0},{0},{0},{0},{0},{1},{0},{0},{0},{0}};
 
-			int [][] palabra = {{0,0,0,0,0,0,1,1,1,1,0}};
+			int [][] palabra = {{0,1,0,1,0,0,1,1,1,1,0}};
 			mostrarMatriz(palabra,"Vector palabra");
 			System.out.println("Palabra=> Filas:"+palabra.length+" Columnas: "+palabra[0].length);
 			
@@ -214,6 +215,13 @@ import java.util.*;
 			System.out.println("--------------sindrome------------------");
 			mostrarMatriz(getSindrome(palabraCodficada),"Sindrome palabraCodficada: ");
 
+
+			System.out.println("--------------decodificar------------------");
+			int [][] palabraDecodificada = decodificarPalabra (palabraCodficada);
+			mostrarMatriz(palabraDecodificada,"palabraDecodificada: ");
+			
+			
+			
 			//////////INTRODUCIMOS UN ERROR EN UNA POSICIÓN DE LA PALABRA/////////////
 			Scanner sc = new Scanner(System.in);
 			int posicionError;
@@ -222,7 +230,6 @@ import java.util.*;
 
 			System.out.println("En esta posicion introducimos un error pos: "+ posicionError);
 
-			
 			int [][] palabraConError = introduceError(palabraCodficada, posicionError);
 
 			mostrarMatriz(palabraConError,"palabraConError: ");
@@ -234,7 +241,7 @@ import java.util.*;
 			
 			
 			
-			int [][] palabraDecodificada = decodificarPalabra (palabraCodficada);
+			//int [][] palabraDecodificada = decodificarPalabra (palabraCodficada);
 			mostrarMatriz(palabraDecodificada,"palabraDecodificada: ");
 			
 			
